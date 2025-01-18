@@ -1,13 +1,13 @@
-package com.example.demo;
+package fi.haagahelia.helloworld;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class HelloworldApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(HelloworldApplication.class, args);
 	}
 
 }

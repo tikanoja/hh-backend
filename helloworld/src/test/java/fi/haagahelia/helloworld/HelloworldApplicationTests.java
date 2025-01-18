@@ -1,10 +1,10 @@
-package com.example.demo;
+package fi.haagahelia.helloworld;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class HelloworldApplicationTests {
 
 	@Test
 	void contextLoads() {

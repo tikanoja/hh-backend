@@ -1,4 +1,4 @@
-package com.example.demo;
+package fi.haagahelia.helloworld;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,10 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String hello(
-        @RequestParam(name = "firstname", required = false, defaultValue = "World") String firstName,
-        @RequestParam(name = "lastname", required = false, defaultValue = "") String lastName
+        @RequestParam(name = "location", required = false, defaultValue = "default location") String location,
+        @RequestParam(name = "name", required = false, defaultValue = "unnamed person") String name
     ) {
-        String greeting = "Hello " + firstName;
-        if (!lastName.isEmpty()) {
-            greeting += " " + lastName;
-        }
+        String greeting = "Welcome to the " + location + " " + name + "!";
         return greeting;
     }
     
