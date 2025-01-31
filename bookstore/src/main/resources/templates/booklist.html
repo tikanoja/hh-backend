@@ -21,12 +21,14 @@
                     <td th:text="${book.title}"></td>
                     <td th:text="${book.isbn}"></td>
                     <td th:text="${book.publicationYear}"></td>
+                    <td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
                 </tr>
             </tbody>
         </table>
+        <a href="/add" class="btn btn-primary">Add Book</a>
        
         <div th:if="${books.size() == 0}">
-            <p>No books available.</p>
+            <p>No books in the database ...</p>
         </div>
     </body>
 </html>

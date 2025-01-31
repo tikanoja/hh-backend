@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +56,32 @@ public class BookController {
         return "redirect:/books"; // redir to refresh page
     }
 
+    // chapter 2
     @RequestMapping("/booklist")
     public String bookList(Model model) {
         model.addAttribute("books", repository.findAll());
         return "booklist"; // render the html template
+    }
+
+    // chapter 2
+    @RequestMapping(value = "/add")
+    public String addBook(Model model){
+    	model.addAttribute("book", new Book());
+        return "addBook";
+    }
+    
+    // chapter 2
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Book book){
+        repository.save(book);
+        return "redirect:booklist";
+    }
+
+    // chapter 2
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+    	repository.deleteById(bookId);
+        return "redirect:../booklist";
     }
 
 }
