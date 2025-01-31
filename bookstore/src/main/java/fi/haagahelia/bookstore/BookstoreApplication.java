@@ -23,7 +23,6 @@ public class BookstoreApplication {
             Book book4 = new Book("The Three-Body Problem", "Cixin Liu", 2008, "978-0765382030", 13.99);
             Book book5 = new Book("Foundation", "Isaac Asimov", 1951, "978-0553293357", 9.49);
 
-
             repository.save(book1);
             repository.save(book2);
             repository.save(book3);
