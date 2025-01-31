@@ -1,6 +1,6 @@
 ctrl+shift+p
 create maven project
-3.2.2.
+3.2.2. -> not listed, prob deprecated -> 3.3.2
 Java
 group id fi.haagahelia
 artifact id [project name] no spaces

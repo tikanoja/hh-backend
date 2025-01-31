@@ -1,11 +1,20 @@
 package fi.haagahelia.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
 
     private String title;
     private String author;
-    private int publicationYear;
     private String isbn;
+    private int publicationYear;
     private double price;
 
     // constructor
@@ -19,6 +28,11 @@ public class Book {
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+    }
+
+    // void constructor
+    public Book() {
+        
     }
 
     // getters
