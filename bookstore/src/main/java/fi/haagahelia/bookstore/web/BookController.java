@@ -1,6 +1,9 @@
 package fi.haagahelia.bookstore.web;
 
 import fi.haagahelia.bookstore.domain.Book;
+import fi.haagahelia.bookstore.domain.BookRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
-import jakarta.validation.Valid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,13 @@ import java.util.List;
 @Controller
 public class BookController {
 
+    // chpater 1
     private final List<Book> books = new ArrayList<>();
+    // chapter 2
+    @Autowired
+    private BookRepository repository;
 
+    // chapter 1
     @GetMapping("/index")
     public String index(Model model) {
         books.add(new Book("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 1968, "978-0345404473", 9.99));
@@ -31,13 +37,14 @@ public class BookController {
         return "index";
     }
     
-
+    // chapter 1
     @GetMapping("/books")
     public String listBooks(Model model) {
         model.addAttribute("book", books);
         return "books"; // render the html template
     }
 
+    // chapter 1
     @PostMapping("/books")
     public String addBook(
         @RequestParam("title") String title,
@@ -47,6 +54,12 @@ public class BookController {
         @RequestParam("price") double price) {
         books.add(new Book(title, author, publicationYear, isbn, price));
         return "redirect:/books"; // redir to refresh page
+    }
+
+    @RequestMapping("/booklist")
+    public String bookList(Model model) {
+        model.addAttribute("books", repository.findAll());
+        return "booklist"; // render the html template
     }
 
 }
