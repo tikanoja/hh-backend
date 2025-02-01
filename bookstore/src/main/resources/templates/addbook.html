@@ -35,6 +35,13 @@
                     <input type="number" step="0.01" id="price" th:field="*{price}" class="form-control" required />
                 </div>
 
+                <div class="mb-3">
+                    <label for="deplist" class="form-label">Category</label>
+                    <select id="deplist" th:field="*{category}" class="form-control">
+                        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>                
+
                 <button type="submit" class="btn btn-success">Save</button>
                 <a href="/booklist" class="btn btn-secondary">Cancel</a>
             </form>
