@@ -7,3 +7,9 @@ artifact id [project name] no spaces
 Jar
 Java ver 17
 add Spring Web, Spring Boot DevTools
+
+open xampp manager
+start new sql db
+http://localhost/phpmyadmin/
+create db test
+comment/uncomment the config at application.properties
