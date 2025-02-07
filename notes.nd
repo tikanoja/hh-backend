@@ -8,7 +8,7 @@ Jar
 Java ver 17
 add Spring Web, Spring Boot DevTools
 
-open xampp manager
+open xampp manager (applications->xampp->manager-osx)
 start new sql db
 http://localhost/phpmyadmin/
 create db test

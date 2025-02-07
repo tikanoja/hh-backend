@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
     @Id
@@ -12,6 +14,7 @@ public class Category {
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @JsonIgnore // chapter 3, add ignore to prevent infinite reciursion when serializing
 	private List<Book> books;
 	
     // constructors
