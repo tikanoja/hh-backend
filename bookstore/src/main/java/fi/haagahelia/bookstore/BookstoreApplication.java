@@ -3,11 +3,15 @@ import fi.haagahelia.bookstore.domain.Book;
 import fi.haagahelia.bookstore.domain.BookRepository;
 import fi.haagahelia.bookstore.domain.Category;
 import fi.haagahelia.bookstore.domain.CategoryRepository;
+import fi.haagahelia.bookstore.domain.User;
+import fi.haagahelia.bookstore.domain.UserRepository;
+
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -18,7 +22,8 @@ public class BookstoreApplication {
 
     @Bean
     public CommandLineRunner demo(BookRepository brepository,
-                                CategoryRepository crepository) {
+                                CategoryRepository crepository,
+                                UserRepository urepository) {
         return (args) -> {
             // check the entries in the repos before creating to avoid creating dups
             // the local mySQL db is persistent between mvn run to this was always added on top
@@ -56,8 +61,18 @@ public class BookstoreApplication {
                 brepository.save(book8);
                 brepository.save(book9);
             }
+
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+            if (urepository.findByUsername("user") == null) {
+                User user1 = new User("user", "user@example.com", encoder.encode("user"), "USER");
+                urepository.save(user1);
+            }
+
+            if (urepository.findByUsername("admin") == null) {
+                User user2 = new User("admin", "admin@example.com", encoder.encode("admin"), "ADMIN");
+                urepository.save(user2);
+            }
         };
     }
-
-
 }

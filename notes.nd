@@ -13,3 +13,9 @@ start new sql db
 http://localhost/phpmyadmin/
 create db test
 comment/uncomment the config at application.properties
+
+running maven
+mvn spring-boot:run
+
+reinstall dependencies
+mvn clean install

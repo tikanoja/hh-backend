@@ -116,4 +116,9 @@ public class BookController {
     public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
         return brepository.findById(bookId);
     }
+
+    @RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
 }
